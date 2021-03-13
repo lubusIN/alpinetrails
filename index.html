@@ -1,16 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUBUS | AlpineTrails</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="./build/style.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
 </head>
-<body class="bg-indigo-100">
-    <div class="flex flex-col items-center justify-center min-w-full min-h-screen">
-        <h1 class="text-5xl font-semibold text-indigo-700">Alpine Trails</h1>
+
+<body class="bg-indigo-50">
+    <div class="flex flex-col items-center justify-start min-w-full min-h-screen px-4 py-8">
+        <!-- Header -->
+        <div class="flex flex-col items-center justify-center mb-14">
+            <svg class="text-indigo-500 h-36" xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2"
+                viewBox="0 0 100 125" fill="currentColor">
+                <defs />
+                <path
+                    d="M50 .5C22.7.5.5 22.7.5 50S22.7 99.5 50 99.5 99.5 77.3 99.5 50 77.3.5 50 .5zM28.8 89.2c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zm34.7 1.3c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5S67.4 93 66 93s-2.5-1.1-2.5-2.5zM79 86.3c-9.7-5.8-11.5-9.6-11.2-11.7 0-.4.1-.6.2-.9.2-.5.4-1.1.4-2.1-.2-3.4-2.9-5.2-5.6-7-2.3-1.5-4.6-3.1-5.8-5.7-1-2.1-1.1-4.7-.4-7.7.2-.8-.3-1.6-1.1-1.8s-1.6.3-1.8 1.1c-.9 3.7-.7 7 .6 9.7 1.6 3.3 4.4 5.2 6.9 6.9 2.6 1.7 4.2 2.9 4.2 4.6 0 .4 0 .5-.2.9-.1.4-.3.9-.4 1.6-.5 4.3 3.3 8.9 11.6 14-1.6 1.1-3.2 2.1-4.9 3 0-.2.1-.5.1-.7 0-3-2.5-5.5-5.5-5.5s-5.5 2.5-5.5 5.5c0 1.7.8 3.3 2 4.3-4 1.1-8.2 1.7-12.5 1.7-5.5 0-10.8-1-15.6-2.7 1.4-1 2.4-2.7 2.4-4.5 0-3-2.5-5.5-5.5-5.5s-5.5 2.5-5.5 5.5v.4c-2.2-1.4-4.4-2.9-6.3-4.7 3.6-4.4 6.8-7.6 9.7-9.8.5 2.5 2.7 4.3 5.4 4.3 3 0 5.5-2.5 5.5-5.5 0-1.1-.3-2.1-.9-3 .3-.2.6-.5.8-.8 1.4-1.9.9-4 .4-6.1-.3-1.3-.7-2.6-.6-4 .2-2.9 2.5-5.8 6.9-8.7.7-.5.9-1.4.4-2.1-.5-.7-1.4-.9-2.1-.4-5.2 3.4-8 7.1-8.3 11-.1 1.8.3 3.5.7 4.9.5 1.8.7 2.8.2 3.5-.2.3-.5.5-.9.6-.7-.3-1.4-.5-2.2-.5-2 0-3.7 1.1-4.7 2.7-.1 0-.1.1-.2.1-3.6 2.1-7.7 6-12.3 11.6C8.8 74.5 3.5 62.9 3.5 50 3.5 24.4 24.4 3.5 50 3.5S96.5 24.4 96.5 50c0 14.7-6.9 27.8-17.5 36.3zM37 74.1c0 1.4-1.1 2.5-2.5 2.5S32 75.5 32 74.1s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5z" />
+                <path
+                    d="M77.2 24.9c-2.3 0-3.9 3.2-5 7.1-.1-.2-.1-.4-.2-.7-1.1-4.2-2.5-6.1-4.4-6.1-1.6 0-2.8 1.4-3.8 4.2-.6-1.8-1.5-3.3-3-3.3-3.8 0-4.1 9.8-4.1 9.9 0 3.1 1.2 4.2 2.6 4.6V46c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-2.2c.7 2.3 2.1 3.1 3.8 3.4v9.7c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-9.7c.3 0 .6-.1.9-.2v.6c0 6.9 2.8 8.3 5.8 8.6v13.7c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5V56.2c3-.3 5.8-1.7 5.8-8.6-.2-2.7-1.7-22.7-7.4-22.7zm-16.5 5c.5 1.4 1.1 4 1.1 6.1 0 1.4-.3 1.6-.3 1.6s-.2.1-.8.1-.8-.1-.8-.1-.3-.3-.3-1.6c0-2.2.6-4.8 1.1-6.1zm6.9 14.4c-1.8 0-2.7 0-2.7-3.8 0-4.7 1.6-10.8 2.7-12.1 1.2 1.3 2.7 7.4 2.7 12.1 0 3.8-.9 3.8-2.7 3.8zm9.6 9c-2.6 0-4.3 0-4.3-5.7 0-7.5 2.6-18.3 4.3-19.6 1.7 1.4 4.3 12.1 4.3 19.6-.1 5.7-1.8 5.7-4.3 5.7zM39.3 26.1c-1.5 0-2.4 1.5-3 3.3-1-2.8-2.3-4.2-3.8-4.2-1.9 0-3.3 1.9-4.4 6.1-.1.2-.1.4-.2.7-1.1-4-2.7-7.1-5-7.1-5.7 0-7.3 20-7.3 22.7 0 6.9 2.8 8.3 5.8 8.6v13.7c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5V56.2c3-.3 5.8-1.7 5.8-8.6V47c.3.1.6.1.9.2v9.7c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-9.7c1.7-.2 3.2-1.1 3.8-3.4V46c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-5.5c1.4-.4 2.6-1.5 2.6-4.6-.1 0-.4-9.8-4.2-9.8zM22.8 53.3c-2.6 0-4.3 0-4.3-5.7 0-7.5 2.6-18.3 4.3-19.6 1.7 1.4 4.3 12.1 4.3 19.6 0 5.7-1.7 5.7-4.3 5.7zm16.5-23.4c.5 1.4 1.1 4 1.1 6.1 0 1.4-.3 1.6-.3 1.6s-.2.1-.8.1-.8-.1-.8-.1-.3-.3-.3-1.6c0-2.2.6-4.8 1.1-6.1zm-6.9 14.4c-1.8 0-2.7 0-2.7-3.8 0-4.7 1.6-10.8 2.7-12.1 1.2 1.3 2.7 7.4 2.7 12.1.1 3.8-.8 3.8-2.7 3.8z" />
+                <circle cx="43.2" cy="67.5" r="1.5" />
+                <circle cx="46.6" cy="59.9" r="1.5" />
+                <circle cx="41.9" cy="80.6" r="1.5" />
+                <circle cx="56.6" cy="68.6" r="1.5" />
+                <circle cx="50.2" cy="92.6" r="1.5" />
+                <path
+                    d="M49.8 80.6c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5-2.5-5.5-5.5-5.5-5.5 2.5-5.5 5.5zm5.4-2.5c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5 1.2-2.5 2.5-2.5z" />
+            </svg>
+            <div class="flex flex-col items-center">
+                <h1 class="text-4xl font-bold text-indigo-500">Alpine Trails</h1>
+                <a href="https://lubus.in"
+                    class="mt-1 text-xs font-medium text-gray-400 border-b-2 border-transparent hover:text-gray-500 hover:border-gray-400">
+                    from the house of LUBUS
+                </a>
+            </div>
+        </div>
+
+        <!-- Trails -->
+        <div class="container max-w-3xl mx-auto mb-12">
+            <div class="grid grid-cols-3 gap-6">
+                <!-- OTP Savings -->
+                <div class="p-4 bg-white rounded-md shadow hover:bg-indigo-100">
+                    <a href="otp-saving.html">
+
+                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+
+                        </svg>
+                        <div>
+                            <h2 class="mb-1 text-lg font-medium text-gray-600">OTP Saving</h2>
+                            <p class="text-xs text-gray-500">
+                                Build for custom WordPress elementor widget to compare and calculate saving on otp.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Funding Offer -->
+                <div class="p-4 bg-white rounded-md shadow hover:bg-indigo-100">
+                    <a href="funding-offer.html">
+
+                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <h2 class="mb-1 text-lg font-medium text-gray-600">Funding offer</h2>
+                            <p class="text-xs text-gray-500">
+                                Build for custom WordPress elementor widget to compare and calculate funding offer.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour Booking -->
+                <div class="p-4 bg-white rounded-md shadow hover:bg-indigo-100">
+                    <a href="tour-booking.html">
+
+                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <div>
+                            <h2 class="mb-1 text-lg font-medium text-gray-600">Tour Booking</h2>
+                            <p class="text-xs text-gray-500">
+                                Build for custom WordPress plugin to fetch and display packages from WordPress for
+                                bookings.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- More -->
+        <div
+            class="container max-w-3xl p-6 mx-auto mb-12 text-center text-indigo-200 border-4 border-indigo-100 border-dashed rounded-lg">
+            More Coming Soon ...
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="flex px-4 py-2 mx-auto mt-auto overflow-hidden text-indigo-100 bg-indigo-800 border border-gray-200 rounded-md shadow-2xl">
+            <h2 class="flex">
+                <svg class="w-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                </svg>
+                Work With Us
+            </h2>
+            <a class="flex items-center px-4 ml-4 -my-2 -mr-4 italic bg-indigo-500"
+                href="mailto:info@lubus.in">info@lubus.in</a>
+        </div>
     </div>
 </body>
+
 </html>

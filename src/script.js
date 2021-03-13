@@ -1,4 +1,4 @@
-window.packagesData = [
+window.packages = [
     {
         id: '1',
         title: 'Delhi - Agra - Delhi Same Day (All Including)',
@@ -116,4 +116,52 @@ window.packagesData = [
             },
         ],
     },
-]
+];
+
+window.booking = {
+    data: {},
+    order: {
+        id: 0,
+        processing: false,
+        error: false,
+    },
+    package: {
+        open: false,
+        vehicle: {
+            name: 0,
+            cost: 0,
+        },
+    },
+    payment: {
+        full: 0,
+        part: 0,
+        due: 0,
+        type: 'full',
+    },
+    getVehicleCost($event) {
+        let cost = $event.target.getAttribute('data-vehical-cost');
+        cost = cost.replace(/[^\d\.\-]/g, '');
+        return Math.round(this.package.vehicle.cost = parseFloat(cost));
+    },
+    getPaymentAmount(){
+        this.payment.part = Math.round(((this.package.vehicle.cost/100) * this.data.partPayment).toFixed(2));
+        this.payment.full = Math.round(parseFloat(this.package.vehicle.cost));
+        this.payment.due = Math.round(parseFloat(this.package.vehicle.cost) - this.payment[this.payment.type] );
+    },
+    setPackage: ($package) => {
+        booking.data = $package;
+    },
+    submit() {
+        const setProcessing = (state) => (this.order.processing = state);
+        const setError = (state) => (this.order.error = state);
+        const setOrderId = (id) => (this.order.id = id);
+        setProcessing(true);
+        setError(false);
+
+        // Mock Form Submit
+        setTimeout(function(){
+            setOrderId(Math.floor(Math.random() * 100) + 1);
+            setProcessing(false);
+        }, 1000);
+    }
+};

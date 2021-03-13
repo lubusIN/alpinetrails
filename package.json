@@ -1,0 +1,33 @@
+{
+  "name": "alpinetrails",
+  "version": "1.0.0",
+  "description": "AplineJS and TailwindCss adventures",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lubusIN/alpinetrails.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lubusIN/alpinetrails/issues"
+  },
+  "homepage": "https://github.com/lubusIN/alpinetrails#readme",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "autoprefixer": "^10.2.5",
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.13",
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.3"
+  }
+}

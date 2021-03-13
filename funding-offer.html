@@ -1,16 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUBUS | AlpineTrails - Funding Offer Compare</title>
+    <title>LUBUS | AlpineTrails - Funding Offer</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="./build/style.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
 </head>
-<body class="bg-indigo-100">
-    <div class="flex flex-col items-center justify-center min-w-full min-h-screen">
-        <h1 class="text-5xl font-semibold text-indigo-700">Funding Offer Compare</h1>
+
+<body class="bg-indigo-50">
+    <div class="flex flex-col items-center justify-start min-w-full min-h-screen px-4 py-8">
+        <!-- Header -->
+        <div class="flex flex-col items-center justify-center mb-14">
+            <a href="./index.html"
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide bg-indigo-800 rounded-md hover:bg-indigo-900 text-indigo-50">
+                <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Browse All
+            </a>
+        </div>
+
+        <!-- Trail-->
+        <div class="container max-w-6xl mx-auto mt-auto">
+            <div x-data="compare_offer()">
+                <div class="relative z-0 px-4 pb-12 lg:pb-20 sm:px-6 lg:px-8 lg:grid lg:grid-cols-5">
+                    <!--  Current Offer -->
+                    <div
+                        class="max-w-md mx-auto lg:mx-0 lg:max-w-none lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3">
+                        <div
+                            class="relative z-10 flex flex-col h-full rounded-lg shadow-lg lg:rounded-none lg:rounded-l-lg">
+
+                            <div class="absolute inset-0 border-2 border-r-0 border-gray-200 rounded-lg rounded-tr-none rounded-br-none pointer-events-none"
+                                aria-hidden="true"></div>
+                            <!-- Box Title -->
+                            <div class="absolute inset-x-0 top-0 transform translate-y-px">
+                                <div class="flex justify-center transform -translate-y-1/2">
+                                    <span
+                                        class="inline-flex px-4 py-1 text-sm font-semibold tracking-wider text-white uppercase bg-gray-500 rounded-full">
+                                        Enter Your Current MCA Offer
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex flex-col flex-1 bg-white border-r-0 rounded-lg rounded-tr-none rounded-br-none">
+                                <div class="flex flex-col justify-between flex-1 p-6 sm:p-10 lg:p-6 xl:p-10">
+                                    <form action="#" method="POST">
+                                        <!-- Inputs -->
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <!-- Funding Amount -->
+                                            <div class="col-span-6">
+                                                <label for="amount" class="block text-sm font-medium text-gray-700">
+                                                    Funding Amount
+                                                </label>
+                                                <div class="relative mt-1 rounded-md shadow-sm">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <span class="text-gray-500 sm:text-sm">
+                                                            $
+                                                        </span>
+                                                    </div>
+                                                    <input x-model="offer.others.amount" x-on:keyup="getPayback()"
+                                                        type="number" min="10000" max="500000" step="1000" name="amount"
+                                                        id="amount" autocomplete="amount"
+                                                        class="block w-full px-3 py-2 pr-12 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm pl-7 focus:outline-none focus:ring-indigo-500 focus:border-brand-blue sm:text-sm">
+                                                    <div
+                                                        class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                                        <span class="text-gray-500 sm:text-sm" id="price-currency">
+                                                            USD
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <input class="w-full bg-blue-200 rounded-lg appearance-none"
+                                                    type="range" min="10000" max="500000" step="1000"
+                                                    x-model="offer.others.amount" x-on:input="getPayback()"
+                                                    value="10000" />
+                                            </div>
+
+                                            <!-- Factor Rate -->
+                                            <div class="col-span-6">
+                                                <label for="rate" class="block text-sm font-medium text-gray-700">
+                                                    Factor Rate
+                                                </label>
+                                                <input x-model="offer.others.rate" x-on:keyup="getPayback()"
+                                                    type="number" min="1" max="1.35" step="0.01" name="rate" id="rate"
+                                                    autocomplete="rate"
+                                                    class="block w-full px-3 py-2 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-brand-blue sm:text-sm">
+
+                                                <input class="w-full bg-blue-200 rounded-lg appearance-none"
+                                                    type="range" min="1" max="1.35" step="0.01"
+                                                    x-model="offer.others.rate" x-on:input="getPayback()"
+                                                    value="1.25" />
+                                            </div>
+
+                                            <!-- Fees -->
+                                            <div class="col-span-6">
+                                                <label for="fees" class="block text-sm font-medium text-gray-700">
+                                                    Sum Of Fees (Doc Fee, Origination, Commission etc.)
+                                                </label>
+                                                <div class="relative mt-1 rounded-md shadow-sm">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <span class="text-gray-500 sm:text-sm">
+                                                            $
+                                                        </span>
+                                                    </div>
+                                                    <input x-model="offer.others.fees" x-on:keyup="getPayback()"
+                                                        type="number" min="500" step="500" name="fees" id="fees"
+                                                        autocomplete="fees"
+                                                        class="block w-full px-3 py-2 pr-12 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm pl-7 focus:outline-none focus:ring-indigo-500 focus:border-brand-blue sm:text-sm">
+                                                    <div
+                                                        class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                                        <span class="text-gray-500 sm:text-sm" id="price-currency">
+                                                            USD
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <input class="w-full bg-blue-200 rounded-lg appearance-none"
+                                                    type="range" min="500" max="10000" step="500"
+                                                    x-model="offer.others.fees" x-on:input="getPayback()"
+                                                    value="10000" />
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <!-- Total Payback -->
+                                    <div class="flex items-center justify-center mt-12">
+                                        <span class="flex items-center px-3 text-2xl tracking-tight text-gray-900">
+                                            <span class="mr-2 text-lg font-medium">
+                                                $
+                                            </span>
+                                            <span class="font-extrabold" x-text="offer.others.payback.toLocaleString()">
+                                                0
+                                            </span>
+                                        </span>
+                                        <span class="text-base font-medium text-gray-500">
+                                            Total Payback Amount
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Funding -->
+                    <div
+                        class="max-w-lg mx-auto mt-10 lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4">
+                        <div class="relative z-10 rounded-lg shadow-xl">
+                            <div class="absolute inset-0 border-2 border-indigo-500 rounded-lg pointer-events-none"
+                                aria-hidden="true">
+                                <!-- No Data -->
+                                <div class="absolute inset-0 flex items-center px-6 pt-12 pb-10 bg-white rounded-lg justify-items-center"
+                                    x-bind:class="{ 'hidden': hasSavings() }">
+                                    <div class="p-4 mx-auto rounded-md">
+                                        <div class="flex items-center justify-items-center">
+                                            <div>
+                                                <h3 class="text-xl font-medium text-center text-indigo-800">
+                                                    No Data
+                                                </h3>
+                                                <div class="mt-2 text-sm text-indigo-600">
+                                                    <p>
+                                                        enter your current offer details and see the
+                                                        difference.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Box Title -->
+                            <div class="absolute inset-x-0 top-0 transform translate-y-px">
+                                <div class="flex justify-center transform -translate-y-1/2">
+                                    <span
+                                        class="inline-flex px-4 py-1 text-sm font-semibold tracking-wider text-white uppercase bg-indigo-500 rounded-full">
+                                        Your New Offer From us
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Savings -->
+                            <div class="flex items-center justify-center px-6 pt-12 pb-10">
+                                <span
+                                    class="flex items-start px-3 text-5xl tracking-tight text-indigo-800 md:text-6xl sm:text-6xl">
+                                    <span class="mt-2 mr-2 text-3xl font-medium md:text-4xl">
+                                        $
+                                    </span>
+                                    <span class="font-extrabold" x-text="offer.savings.toLocaleString()">
+                                        0
+                                    </span>
+                                </span>
+                                <span class="text-2xl font-medium text-indigo-400 md:text-xl">
+                                    Savings
+                                </span>
+                            </div>
+
+                            <!-- Offer Details -->
+                            <div
+                                class="px-6 pt-6 pb-8 border-t-2 border-gray-100 rounded-b-lg bg-gray-50 sm:px-10 sm:py-10">
+                                <dl class="px-4 py-5 sm:divide-y sm:divide-gray-200 sm:p-0">
+                                    <!-- Funding Amount -->
+                                    <div class="grid grid-cols-2 py-4 sm:py-5 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Funding Amount
+                                        </dt>
+                                        <dd x-text="Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 0}).format(offer.others.amount)"
+                                            class="mt-1 text-sm text-right text-gray-900 sm:mt-0">
+                                            0
+                                        </dd>
+                                    </div>
+
+                                    <!-- Factor Rate -->
+                                    <div class="grid grid-cols-2 py-4 sm:py-5 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Factor rate
+                                        </dt>
+                                        <dd x-text="offer.our.rate"
+                                            class="mt-1 text-sm text-right text-gray-900 sm:mt-0">
+                                            1.15
+                                        </dd>
+                                    </div>
+
+                                    <!-- Fees -->
+                                    <div class="grid grid-cols-2 py-4 sm:py-5 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Fees
+                                        </dt>
+                                        <dd x-text="offer.our.fees.toLocaleString('en-US', {
+                                                        style: 'currency',
+                                                        currency: 'USD',
+                                                        minimumFractionDigits: 0
+                                                      })" class="mt-1 text-sm text-right text-gray-900 sm:mt-0">
+                                            $0
+                                        </dd>
+                                    </div>
+                                </dl>
+
+                                <!-- Total Payback --->
+                                <div class="flex flex-col items-center justify-center mt-8 md:flex-row">
+                                    <span class="flex items-center px-3 text-2xl tracking-tight text-gray-900">
+                                        <span class="mr-2 text-lg font-medium">
+                                            $
+                                        </span>
+                                        <span class="font-extrabold" x-text="offer.our.payback.toLocaleString()">
+                                            0
+                                        </span>
+                                    </span>
+                                    <span class="text-base font-medium text-gray-500">
+                                        You New Total Payback Amount
+                                    </span>
+                                </div>
+
+                                <!-- Contact CTA -->
+                                <a href="https://devstaging.businessfunding.com/contact/" x-bind:href="getCtaUrl()"
+                                    class="block w-full px-6 py-4 mt-10 text-xl font-medium leading-6 text-center text-white bg-indigo-800 border border-transparent rounded-lg shadow-md hover:bg-indigo-700"
+                                    aria-describedby="tier-growth">
+                                    I'm Interested
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  Compare Calculation -->
+            <script>
+                function compare_offer() {
+                    return {
+                        offer: {
+                            others: {
+                                amount: 0,
+                                rate: 0,
+                                fees: 0,
+                                payback: 0,
+                            },
+                            our: {
+                                rate: 1.15,
+                                fees: 0,
+                                payback: 0,
+                            },
+                            savings: 0
+                        },
+                        // Get Info
+                        getAmount() {
+                            return (this.offer.others.amount === "") ? 0 : parseFloat(this.offer.others.amount);
+                        },
+                        getRate() {
+                            return (this.offer.others.rate === "" || this.offer.others.rate <= 0) ? 1 : parseFloat(this.offer.others.rate);
+                        },
+                        getFees() {
+                            return (this.offer.others.fees === "") ? 0 : parseFloat(this.offer.others.fees);
+                        },
+
+                        // Calculate payback and savings
+                        getPayback() {
+                            this.offer.others.payback = (this.getAmount() * this.getRate()) + this.getFees();
+                            this.offer.our.payback = this.getAmount() * this.offer.our.rate;
+                            this.getSavings();
+                        },
+                        getSavings() {
+                            this.offer.savings = this.offer.others.payback - this.offer.our.payback;
+                        },
+
+                        // hasSavings
+                        hasSavings() {
+                            return this.getAmount() > 0 && this.getRate() > 0 && this.getFees() > 0;
+                        },
+
+                        // Get CTA Url
+                        getCtaUrl() {
+                            return `${window.location.origin}/select-offer/?amount=${this.getAmount()}&rate=${this.getRate()}&fees=${this.getFees()}`;
+                        }
+                    }
+                }
+            </script>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="flex px-4 py-2 mx-auto mt-auto overflow-hidden text-indigo-100 bg-indigo-800 border border-gray-200 rounded-md shadow-2xl">
+            <h2 class="flex">
+                <svg class="w-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                </svg>
+                Work With Us
+            </h2>
+            <a class="flex items-center px-4 ml-4 -my-2 -mr-4 italic bg-indigo-500"
+                href="mailto:info@lubus.in">info@lubus.in</a>
+        </div>
     </div>
 </body>
+
 </html>

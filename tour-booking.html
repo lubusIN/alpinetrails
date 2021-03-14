@@ -81,8 +81,7 @@
                             });
                             $watch( 'payment.type' , value => {
                                 getPaymentAmount();
-                            } );" 
-                            @select-package-event.window="setPackage($event.detail); package.open = true;">
+                            } );" @select-package-event.window="setPackage($event.detail); package.open = true;">
                 <div x-show="package.open" class="fixed inset-0 z-10 overflow-y-auto">
                     <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
                         <div x-show="package.open" x-description="Background overlay, show/hide based on modal state."
@@ -148,7 +147,7 @@
                                     <!-- For Cost Calculation & Payment -->
                                     <input type="hidden" name="order_id" :value="order.id" />
                                     <input type="hidden" name="package_id" :value="data.id" />
-                                    <input type="hidden" name="amount"  :value="payment[payment.type]"/>
+                                    <input type="hidden" name="amount" :value="payment[payment.type]" />
                                     <input type="hidden" name="due" :value="payment.due" />
 
                                     <input type="hidden" name="language" value="EN" />
@@ -236,14 +235,16 @@
                                                         <input x-model="payment.type"
                                                             class="border-gray-400 mt-pay focus:ring-0 focus:border-primary text-primary sm:text-sm"
                                                             type="radio" id="part" name="paymentType" value="part" />
-                                                        <label for="part">Part: ₹<span x-text="payment.part"></span></label><br />
+                                                        <label for="part">Part: ₹<span
+                                                                x-text="payment.part"></span></label><br />
                                                     </div>
 
                                                     <div>
                                                         <input x-model="payment.type"
                                                             class="border-gray-400 mt-pay focus:ring-0 focus:border-primary text-primary sm:text-sm"
                                                             type="radio" id="full" name="paymentType" value="full" />
-                                                        <label for="full">Full: ₹<span x-text="payment.full"></span></label><br />
+                                                        <label for="full">Full: ₹<span
+                                                                x-text="payment.full"></span></label><br />
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,9 +310,10 @@
                                     <button :class="{ 'cursor-not-allowed': order.processing}"
                                         class="block px-8 py-3 mx-auto mt-8 font-semibold tracking-wide text-white bg-indigo-600 rounded-md hover:bg-indigo-800"
                                         :disabled="order.processing">
-                                        
-                                        <span x-show="!order.processing" x-text="`Make Payment of ₹ ${payment[payment.type].toLocaleString()}`"></span>
-                                        
+
+                                        <span x-show="!order.processing"
+                                            x-text="`Make Payment of ₹ ${payment[payment.type].toLocaleString()}`"></span>
+
                                         <span x-show="order.processing" :class="{ 'flex': order.processing}">
                                             <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -335,18 +337,39 @@
         </div>
 
         <!-- Footer -->
-        <div
-            class="flex px-4 py-2 mx-auto mt-auto overflow-hidden text-indigo-100 bg-indigo-800 border border-gray-200 rounded-md shadow-2xl">
-            <h2 class="flex">
-                <svg class="w-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+        <div class="flex flex-col items-center mt-auto">
+            <!-- Source Code -->
+            <div
+                class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
+                <a class="flex items-center px-2 py-1 "
+                    href="https://github.com/lubusIN/alpinetrails/blob/main/tour-booking.html" target="_new">
+                    <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    source code
+                </a>
+            </div>
+
+            <!-- Work with us -->
+            <div
+                class="relative flex px-4 py-2 mx-auto overflow-hidden text-sm text-indigo-100 bg-indigo-800 border border-gray-200 rounded-md shadow-2xl">
+                <span class="flex items-center">
+                    <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Work With Us
+                </span>
+                <svg class="w-10 h-auto -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
+                    preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,0 100,0 50,100 0,100" />
                 </svg>
-                Work With Us
-            </h2>
-            <a class="flex items-center px-4 ml-4 -my-2 -mr-4 italic bg-indigo-500"
-                href="mailto:info@lubus.in">info@lubus.in</a>
+                <a class="flex items-center px-8 ml-3 -my-2 -mr-4 italic bg-indigo-500 hover:underline"
+                    href="mailto:info@lubus.in">info@lubus.in</a>
+            </div>
         </div>
     </div>
 </body>

@@ -38,76 +38,17 @@
                     class="font-medium text-gray-500 divide-y divide-yellow-300">
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">HTML</li>
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">CSS</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">JavaScript</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">tailwindcss</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Alpine.js</li>
+                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">JavaScript
+                    </li>
+                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">tailwindcss
+                    </li>
+                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Alpine.js
+                    </li>
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">React</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">WordPress</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Learn JS Build Process</li>
+                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">WordPress
+                    </li>
                 </ul>
             </div>
-
-            <script>
-                const checklist = {
-                    loadStatus($el) {
-                        const list = this.getList($el);
-                        const listItems = Array.from(list.items);
-                        const  status = this.getStatus(list);
-
-                        listItems.forEach((item) => {
-                            const itemName = item.textContent;
-                            status[itemName] && item.classList.add("line-through");
-                        });
-                    },
-                    getList($el) {
-                        return {
-                            name: $el.id,
-                            items: $el.children
-                        };
-                    },
-                    getStatus({name, items}) {
-                        const status = localStorage[name];
-                        
-                        if (!status) {
-                            const checklistItems=[];
-                            for (let item of items) {
-                                checklistItems.push([`${item.textContent}`, false]);
-                            }
-
-                            const entries = Object.fromEntries(checklistItems);
-                            localStorage[name] = JSON.stringify(entries);
-                            return entries;
-                        } else {
-                            return JSON.parse(localStorage[name]);
-                        }
-
-                        return itemsStatus;
-                    },
-                    toggleItem($list, $item) {
-                        const checklist = this.getList($list);
-                        const data = this.getStatus(checklist);
-                        const key = $item.target.textContent
-
-                        data[key] = !data[key];
-                        $item.target.classList.toggle("line-through");
-
-                        localStorage[checklist.name] = JSON.stringify(data);
-                    },
-                    toggleAll() {
-
-                    },
-                    slugify(text, separator = "-") {
-                        return text
-                            .toString()
-                            .normalize('NFD')                   // split an accented letter in the base letter and the acent
-                            .replace(/[\u0300-\u036f]/g, '')   // remove all previously split accents
-                            .toLowerCase()
-                            .trim()
-                            .replace(/[^a-z0-9 ]/g, '')   // remove all chars not letters, numbers and spaces (to be replaced)
-                            .replace(/\s+/g, separator);
-                    }
-                }
-            </script>
         </div>
 
         <!-- Footer -->
@@ -146,6 +87,77 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const checklist = {
+            loadStatus($el) {
+                const list = this.getList($el);
+                const listItems = Array.from(list.items);
+                const status = this.getStatus(list);
+
+                // Mark items completed based on localstorage status
+                listItems.forEach((item) => {
+                    const itemName = item.textContent;
+                    status[itemName] && item.classList.add("line-through");
+                });
+
+                // Remove orphan items
+                this.removeOrphan(list, status);
+            },
+            getList($el) {
+                return {
+                    name: $el.id,
+                    items: $el.children
+                };
+            },
+            getStatus({ name, items }) {
+                const status = localStorage[name];
+
+                if (!status) {
+                    const checklistItems = [];
+                    for (let item of items) {
+                        checklistItems.push([`${item.textContent}`, false]);
+                    }
+
+                    const entries = Object.fromEntries(checklistItems);
+                    localStorage[name] = JSON.stringify(entries);
+                    return entries;
+                } else {
+                    return JSON.parse(localStorage[name]);
+                }
+
+                return itemsStatus;
+            },
+            removeOrphan(htmlList, localList) {
+                // Build array of list from list text
+                const checklistItems = [];
+                for (let item of htmlList.items) {
+                    checklistItems.push(item.textContent.trim());
+                }
+        
+                // Detele entry from localstorage if not in html list
+                Object.keys(localList).forEach((item) => {
+                    !checklistItems.includes(item) && delete localList[item];
+                });
+                
+                // Update location storage
+                localStorage[htmlList.name] = JSON.stringify(localList); 
+            },
+            toggleItem($list, $item) {
+                const checklist = this.getList($list);
+                const data = this.getStatus(checklist);
+                const key = $item.target.textContent
+
+                data[key] = !data[key];
+                $item.target.classList.toggle("line-through");
+
+                localStorage[checklist.name] = JSON.stringify(data);
+            },
+            toggleAll() {
+
+            },
+        }
+    </script>
 </body>
 
 </html>

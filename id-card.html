@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUBUS | AlpineTrails - Identity Card</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="./build/style.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+</head>
+
+<body class="bg-indigo-50">
+    <div class="flex flex-col items-center justify-start min-w-full min-h-screen px-4 py-8">
+        <!-- Header -->
+        <div class="flex flex-col items-center justify-center mb-14">
+            <a href="./index.html"
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide bg-indigo-800 rounded-md hover:bg-indigo-900 text-indigo-50">
+                <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Browse All
+            </a>
+        </div>
+
+        <!-- Trail-->
+        <div class="container max-w-3xl mx-auto mt-auto mb-12">
+
+            <!-- Title -->
+            <h1 class="mb-8 text-2xl font-medium text-center text-gray-500">Generate Identity Card</h1>
+
+            <div id="card" class="max-w-xl px-8 pt-12 mx-auto space-y-8 overflow-hidden bg-white border rounded-lg shadow-2xl">
+                <header class="flex items-center justify-center space-x-6">
+                    <h1 class="text-3xl font-bold text-gray-800 uppercase">Cyclist</h1>
+                    <img class="w-32" src="https://ppof.in/wp-content/uploads/2018/09/ppof-logo-small.png" alt="PPOF" />
+                    <h1 class="text-3xl font-bold text-gray-800 uppercase">Identity</h1>
+                </header>
+                <main class="flex flex-col items-center justify-center space-y-8">
+                    <figure class="z-10 w-48 p-1 -mb-24 bg-white border-4 border-yellow-500 rounded-xl">
+                        <img class="rounded-lg"
+                            src="https://pbs.twimg.com/profile_images/1354576684377198593/ibTqetY3_400x400.jpg"
+                            alt="Ajit Bohra" />
+                    </figure>
+                    <article id="details" class="p-4 pt-20 border-4 border-yellow-500 rounded-xl">
+                        <ul class="grid grid-cols-1 text-center divide-y-2 divide-yellow-100">
+                            <li class="py-2">Ajit Bohra</li>
+                            <li class="py-2">12th Jan 1987</li>
+                            <li class="py-2">Blood Group B+</li>
+                            <li class="py-2">B/206, Tulsi Dham, Talao Road, Near Narenkumar Jewellers, Bhayander (E),
+                                Thane 401105.</li>
+                            <li class="py-4 my-2 bg-yellow-100 rounded-lg op">
+                                <h2 class="mb-2 font-semibold">Emergency Contacts</h2>
+                                <ul class="space-y-1">
+                                    <li>Mahesh Sharma 9865326589</li>
+                                    <li>Amit Bohra 8965236598</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </article>
+                </main>
+                <footer class="p-2 -mx-8 font-semibold text-center text-white bg-yellow-600">www.ppof.in</footer>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="flex flex-col items-center mt-auto">
+            <!-- Source Code -->
+            <div
+                class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
+                <a class="flex items-center px-2 py-1 "
+                    href="https://github.com/lubusIN/alpinetrails/blob/main/id-card.html" target="_new">
+                    <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    source code
+                </a>
+            </div>
+
+            <!-- Work with us -->
+            <div
+                class="relative flex px-4 py-2 mx-auto overflow-hidden text-sm text-indigo-100 bg-indigo-800 border border-gray-200 rounded-md shadow-2xl">
+                <span class="flex items-center">
+                    <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Work With Us
+                </span>
+                <svg class="w-10 h-auto -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
+                    preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
+                <a class="flex items-center px-8 ml-3 -my-2 -mr-4 italic bg-indigo-500 hover:underline"
+                    href="mailto:info@lubus.in">info@lubus.in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function savings() {
+            return {
+                savings: {
+                    value: 5000, // Verifications per month
+                    rate: {
+                        otp: 0.21,
+                        notp: 0.09,
+                    },
+                    cost: {
+                        otp: 1050,
+                        notp: 450,
+                    },
+                    amount: 600, // Savings per month
+                },
+                getSavings() {
+                    this.savings.cost.otp = parseFloat(this.savings.value * this.savings.rate.otp);
+                    this.savings.cost.notp = parseFloat(this.savings.value * this.savings.rate.notp);
+                    this.savings.amount = parseFloat(this.savings.cost.otp - this.savings.cost.notp);
+
+                    return this.savings.amount;
+                },
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -30,12 +30,12 @@
         <div class="container max-w-3xl mx-auto mt-auto mb-12">
 
             <!-- Title -->
-            <h1 class="mb-8 text-2xl font-medium text-center text-gray-500">Checklist</h1>
+            <h1 class="mb-8 text-2xl font-medium text-center text-gray-800">Checklist</h1>
 
             <!-- Main -->
             <div class="p-10 border border-yellow-300 rounded-md bg-yellow-50">
                 <ul x-on:load.window="loadStatus($el)" x-data="checklist" id="learn"
-                    class="font-medium text-gray-500 divide-y divide-yellow-300">
+                    class="font-medium text-gray-700 divide-y divide-yellow-300">
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">HTML</li>
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">CSS</li>
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">JavaScript
@@ -45,8 +45,8 @@
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Alpine.js
                     </li>
                     <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">React</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">WordPress
-                    </li>
+                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">WordPress</li>
+                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Block Editor</li>
                 </ul>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 // Mark items completed based on localstorage status
                 listItems.forEach((item) => {
                     const itemName = item.textContent;
-                    status[itemName] && item.classList.add("line-through");
+                    status[itemName] && item.classList.add("line-through", "text-gray-400");
                 });
 
                 // Remove orphan items
@@ -150,6 +150,7 @@
 
                 data[key] = !data[key];
                 $item.target.classList.toggle("line-through");
+                $item.target.classList.toggle("text-gray-400");
 
                 localStorage[checklist.name] = JSON.stringify(data);
             },

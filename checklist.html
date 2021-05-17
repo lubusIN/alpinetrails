@@ -27,26 +27,26 @@
         </div>
 
         <!-- Trail-->
-        <div class="container max-w-3xl mx-auto mt-auto mb-12">
+        <div class="container max-w-xl mx-auto mt-auto mb-12">
 
             <!-- Title -->
-            <h1 class="mb-8 text-2xl font-medium text-center text-gray-800">Checklist</h1>
+            <h1 class="py-3 text-xl tracking-wider text-center text-white bg-gray-800 rounded-t-md">Checklist</h1>
 
             <!-- Main -->
-            <div class="p-10 border border-yellow-300 rounded-md bg-yellow-50">
+            <div class="bg-gray-100 shadow-2xl rounded-b-xl">
                 <ul x-on:load.window="loadStatus($el)" x-data="checklist" id="learn"
-                    class="font-medium text-gray-700 divide-y divide-yellow-300">
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">HTML</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">CSS</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">JavaScript
+                    class="py-4 font-medium text-gray-700 divide-y divide-indigo-300">
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">HTML</li>
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">CSS</li>
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">JavaScript
                     </li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">tailwindcss
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">tailwindcss
                     </li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Alpine.js
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">Alpine.js
                     </li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">React</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">WordPress</li>
-                    <li x-on:click="toggleItem($el, $event)" class="py-2 cursor-pointer hover:text-gray-900">Block Editor</li>
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">React</li>
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">WordPress</li>
+                    <li x-on:click="toggleItem($el, $event)" class="px-6 py-2 cursor-pointer hover:text-gray-900">Block Editor</li>
                 </ul>
             </div>
         </div>

@@ -275,58 +275,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--  Compare Calculation -->
-            <script>
-                function compare_offer() {
-                    return {
-                        offer: {
-                            others: {
-                                amount: 0,
-                                rate: 0,
-                                fees: 0,
-                                payback: 0,
-                            },
-                            our: {
-                                rate: 1.15,
-                                fees: 0,
-                                payback: 0,
-                            },
-                            savings: 0
-                        },
-                        // Get Info
-                        getAmount() {
-                            return (this.offer.others.amount === "") ? 0 : parseFloat(this.offer.others.amount);
-                        },
-                        getRate() {
-                            return (this.offer.others.rate === "" || this.offer.others.rate <= 0) ? 1 : parseFloat(this.offer.others.rate);
-                        },
-                        getFees() {
-                            return (this.offer.others.fees === "") ? 0 : parseFloat(this.offer.others.fees);
-                        },
-
-                        // Calculate payback and savings
-                        getPayback() {
-                            this.offer.others.payback = (this.getAmount() * this.getRate()) + this.getFees();
-                            this.offer.our.payback = this.getAmount() * this.offer.our.rate;
-                            this.getSavings();
-                        },
-                        getSavings() {
-                            this.offer.savings = this.offer.others.payback - this.offer.our.payback;
-                        },
-
-                        // hasSavings
-                        hasSavings() {
-                            return this.getAmount() > 0 && this.getRate() > 0 && this.getFees() > 0;
-                        },
-
-                        // Get CTA Url
-                        getCtaUrl() {
-                            return `${window.location.origin}/select-offer/?amount=${this.getAmount()}&rate=${this.getRate()}&fees=${this.getFees()}`;
-                        }
-                    }
-                }
-            </script>
         </div>
 
         <!-- Footer -->
@@ -356,7 +304,7 @@
                     </svg>
                     Work With Us
                 </span>
-                <svg class="w-10 h-auto -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
+                <svg class="w-10 h-10 -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
                     preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="50,0 100,0 50,100 0,100" />
                 </svg>
@@ -365,6 +313,58 @@
             </div>
         </div>
     </div>
+
+       <!--  Component Data -->
+       <script>
+        function compare_offer() {
+            return {
+                offer: {
+                    others: {
+                        amount: 0,
+                        rate: 0,
+                        fees: 0,
+                        payback: 0,
+                    },
+                    our: {
+                        rate: 1.15,
+                        fees: 0,
+                        payback: 0,
+                    },
+                    savings: 0
+                },
+                // Get Info
+                getAmount() {
+                    return (this.offer.others.amount === "") ? 0 : parseFloat(this.offer.others.amount);
+                },
+                getRate() {
+                    return (this.offer.others.rate === "" || this.offer.others.rate <= 0) ? 1 : parseFloat(this.offer.others.rate);
+                },
+                getFees() {
+                    return (this.offer.others.fees === "") ? 0 : parseFloat(this.offer.others.fees);
+                },
+
+                // Calculate payback and savings
+                getPayback() {
+                    this.offer.others.payback = (this.getAmount() * this.getRate()) + this.getFees();
+                    this.offer.our.payback = this.getAmount() * this.offer.our.rate;
+                    this.getSavings();
+                },
+                getSavings() {
+                    this.offer.savings = this.offer.others.payback - this.offer.our.payback;
+                },
+
+                // hasSavings
+                hasSavings() {
+                    return this.getAmount() > 0 && this.getRate() > 0 && this.getFees() > 0;
+                },
+
+                // Get CTA Url
+                getCtaUrl() {
+                    return `${window.location.origin}/select-offer/?amount=${this.getAmount()}&rate=${this.getRate()}&fees=${this.getFees()}`;
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

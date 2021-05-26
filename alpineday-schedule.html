@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUBUS | AlpineTrails - OTP Saving</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="./build/style.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+</head>
+
+<body class="bg-indigo-50">
+    <div class="flex flex-col items-center justify-start min-w-full min-h-screen px-4 py-8">
+        <!-- Header -->
+        <div class="flex flex-col items-center justify-center mb-14">
+            <a href="./index.html"
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide bg-indigo-800 rounded-md hover:bg-indigo-900 text-indigo-50">
+                <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Browse All
+            </a>
+        </div>
+
+        <!-- Trail-->
+        <div x-data="alpineday" class="container max-w-xl mx-auto mt-auto mb-12">
+
+            <!-- Title -->
+            <h1 class="mb-1 text-2xl font-medium text-center text-gray-700">Alpine Day 2021</h1>
+            <span class="block mb-8 text-center text-gray-600" x-text="'Your timezone - ' + Intl.DateTimeFormat().resolvedOptions().timeZone"></span>
+
+            <div>
+                <ul class="flex flex-col space-y-8 flex-nowrap">
+                    <template x-for="(session, index) in alpineday.schedule" :key="index">
+                        <li :key="index" class="flex items-center flex-grow-0">
+                            <span 
+                                x-text="new Date(session.at).toLocaleString('en-US',  { timeZone: 'EST', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'})" 
+                                :class="{ 'bg-indigo-700 text-white' : session.highlight, 'text-indigo-700 bg-indigo-100 ': !session.highlight  }" 
+                                class="px-2 py-1 text-sm font-semibold rounded"></span>
+                            <span x-text="session.session"  :class="{ 'bg-indigo-100 text-white font-bold' : session.highlight }"  class="flex-1 px-4 py-1 text-sm font-medium text-gray-800 rounded-r"></span>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex flex-col items-center mt-auto">
+            <!-- Source Code -->
+            <div
+                class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
+                <a class="flex items-center px-2 py-1 "
+                    href="https://github.com/lubusIN/alpinetrails/blob/main/otp-saving.html" target="_new">
+                    <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    source code
+                </a>
+            </div>
+
+            <!-- Work with us -->
+            <div
+                class="relative flex px-4 py-2 mx-auto overflow-hidden text-sm text-indigo-100 bg-indigo-800 border border-gray-200 rounded-md shadow-2xl">
+                <span class="flex items-center">
+                    <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Work With Us
+                </span>
+                <svg class="w-10 h-10 -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
+                    preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
+                <a class="flex items-center px-8 ml-3 -my-2 -mr-4 italic bg-indigo-500 hover:underline"
+                    href="mailto:info@lubus.in">info@lubus.in</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component Data -->
+    <script>
+        const alpineday = {
+            schedule: [
+                {
+                    session: "Opening Remarks 🚀",
+                    at: "11 June 2021 09:00",
+                    highlight: true,
+                },
+                {
+                    session: "The State Of Alpine by CALEB PORZIO",
+                    at: "11 June 2021 09:10",
+                },
+                {
+                    session: "Tips for real-world AlpineJS by HUGO DI FRANCESCO",
+                    at: "11 June 2021 10:00",
+                },
+                {
+                    session: "Building a Better Modal by AUSTEN CAMERON",
+                    at: "11 June 2021 10:20",
+                },
+                {
+                    session: "Micro Interactions using AlpineJS by SHRUTI BALASA",
+                    at: "11 June 2021 10:40",
+                },
+                {
+                    session: "Break ⏳",
+                    at: "11 June 2021 11:00",
+                    highlight: true,
+                },
+                {
+                    session: "How to keep your tech stack simple, have a calm life, and make a million dollars by JUSTIN JACKSON & JON BUDA",
+                    at: "11 June 2021 11:20",
+                },
+                {
+                    session: "How To Carve A Spoon (Literally) by JESSE SCHUTT",
+                    at: "11 June 2021 11:40",
+                },
+                {
+                    session: "From Vue to Alpine: How & Why by MATT STAUFFER",
+                    at: "11 June 2021 12:00",
+                },
+                {
+                    session: "Break ⏳",
+                    at: "11 June 2021 12:20",
+                    highlight: true,
+                },
+                {
+                    session: "Live Pairing Session: Building Alpine V3 From Scratch by ADAM WATHAN",
+                    at: "11 June 2021 12:40",
+                },
+                {
+                    session: "The Future Of Alpine by CALEB PORZIO",
+                    at: "11 June 2021 13:15",
+                },
+                {
+                    session: "Closing Remarks & No Plans To Merge After Party 🎉",
+                    at: "11 June 2021 15:00",
+                    highlight: true,
+                },
+            ]
+        }
+    </script>
+</body>
+
+</html>

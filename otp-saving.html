@@ -28,7 +28,7 @@
 
         <!-- Trail-->
         <div class="container max-w-3xl mx-auto mt-auto mb-12">
-            
+
             <!-- Title -->
             <h1 class="mb-8 text-2xl font-medium text-center text-gray-500">Calculate OTP Saving</h1>
 
@@ -59,38 +59,15 @@
                     </div>
                 </div>
             </div>
-            <script>
-                function savings() {
-                    return {
-                        savings: {
-                            value: 5000, // Verifications per month
-                            rate: {
-                                otp: 0.21,
-                                notp: 0.09,
-                            },
-                            cost: {
-                                otp: 1050,
-                                notp: 450,
-                            },
-                            amount: 600, // Savings per month
-                        },
-                        getSavings() {
-                            this.savings.cost.otp = parseFloat(this.savings.value * this.savings.rate.otp);
-                            this.savings.cost.notp = parseFloat(this.savings.value * this.savings.rate.notp);
-                            this.savings.amount = parseFloat(this.savings.cost.otp - this.savings.cost.notp);
-
-                            return this.savings.amount;
-                        },
-                    }
-                }
-            </script>
         </div>
 
         <!-- Footer -->
         <div class="flex flex-col items-center mt-auto">
             <!-- Source Code -->
-            <div class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
-                <a class="flex items-center px-2 py-1 " href="https://github.com/lubusIN/alpinetrails/blob/main/otp-saving.html" target="_new">
+            <div
+                class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
+                <a class="flex items-center px-2 py-1 "
+                    href="https://github.com/lubusIN/alpinetrails/blob/main/otp-saving.html" target="_new">
                     <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
@@ -111,7 +88,7 @@
                     </svg>
                     Work With Us
                 </span>
-                <svg class="w-10 h-auto -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
+                <svg class="w-10 h-10 -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
                     preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="50,0 100,0 50,100 0,100" />
                 </svg>
@@ -120,6 +97,33 @@
             </div>
         </div>
     </div>
+
+    <!-- Component Data -->
+    <script>
+        function savings() {
+            return {
+                savings: {
+                    value: 5000, // Verifications per month
+                    rate: {
+                        otp: 0.21,
+                        notp: 0.09,
+                    },
+                    cost: {
+                        otp: 1050,
+                        notp: 450,
+                    },
+                    amount: 600, // Savings per month
+                },
+                getSavings() {
+                    this.savings.cost.otp = parseFloat(this.savings.value * this.savings.rate.otp);
+                    this.savings.cost.notp = parseFloat(this.savings.value * this.savings.rate.notp);
+                    this.savings.amount = parseFloat(this.savings.cost.otp - this.savings.cost.notp);
+
+                    return this.savings.amount;
+                },
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -40,82 +40,22 @@
         </div>
 
         <!-- Trails -->
-        <div class="container max-w-3xl mx-auto mb-12">
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-                <!-- OTP Savings -->
-                <div class="p-4 bg-white border-2 border-transparent rounded-md shadow hover:border-indigo-300">
-                    <a href="otp-saving.html">
+        <div x-data="trails" class="container max-w-3xl mx-auto mb-12">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <!-- Trail Items -->
+                <template x-for="(trail, index) in trails" :key="index">
+                    <div class="p-4 bg-white border-2 border-transparent rounded-md shadow hover:border-indigo-300">
+                        <a :href="trail.link">
 
-                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-
-                        </svg>
-                        <div>
-                            <h2 class="mb-1 text-lg font-medium text-gray-600">OTP Saving</h2>
-                            <p class="text-xs text-gray-500">
-                                Build for custom WordPress elementor widget to compare and calculate saving on otp.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Funding Offer -->
-                <div class="p-4 bg-white border-2 border-transparent rounded-md shadow hover:border-indigo-300">
-                    <a href="funding-offer.html">
-
-                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <div>
-                            <h2 class="mb-1 text-lg font-medium text-gray-600">Funding Offer</h2>
-                            <p class="text-xs text-gray-500">
-                                Build for custom WordPress elementor widget to compare and calculate funding offer.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour Booking -->
-                <div class="p-4 bg-white border-2 border-transparent rounded-md shadow hover:border-indigo-300">
-                    <a href="tour-booking.html">
-
-                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <div>
-                            <h2 class="mb-1 text-lg font-medium text-gray-600">Tour Booking</h2>
-                            <p class="text-xs text-gray-500">
-                                Build for custom WordPress plugin to fetch and display packages from WordPress for
-                                bookings.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-
-                 <!-- Id Card -->
-                 <div class="p-4 bg-white border-2 border-transparent rounded-md shadow hover:border-indigo-300">
-                    <a href="id-card.html">
-                        <svg class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
-                          </svg>
-                        <div>
-                            <h2 class="mb-1 text-lg font-medium text-gray-600">Identity Card</h2>
-                            <p class="text-xs text-gray-500">
-                               Build for cycling store to allow cyclists to add details and generate card PDF for print.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-
-
+                            <svg x-html="trail.icon" class="w-8 mb-2 text-indigo-300" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor"></svg>
+                            <div>
+                                <h2 x-text="trail.title" class="mb-1 text-lg font-medium text-gray-600"></h2>
+                                <p x-text="trail.description" class="text-xs text-gray-500"></p>
+                            </div>
+                        </a>
+                    </div>
+                </template>
             </div>
         </div>
 
@@ -129,7 +69,8 @@
         <!-- Footer -->
         <div class="flex flex-col items-center mt-auto">
             <!-- Source Code -->
-            <div class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
+            <div
+                class="inline-block mx-auto my-4 text-sm text-gray-500 border border-gray-300 rounded hover:bg-gray-600 hover:text-white">
                 <a class="flex items-center px-2 py-1 " href="https://github.com/lubusIN/alpinetrails" target="_new">
                     <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -151,7 +92,7 @@
                     </svg>
                     Work With Us
                 </span>
-                <svg class="w-10 h-auto -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
+                <svg class="w-10 h-10 -my-2 -mr-8 text-indigo-800 transform" fill="currentColor" viewBox="0 0 100 100"
                     preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="50,0 100,0 50,100 0,100" />
                 </svg>
@@ -159,8 +100,38 @@
                     href="mailto:info@lubus.in">info@lubus.in</a>
             </div>
         </div>
-
     </div>
+
+    <script>
+        const trails = [
+            {
+                title: "Alpine Day Schedule",
+                description: "Alpine day schedule in your local timezone.",
+                link: "alpineday-schedule.html",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />`,
+            },
+            {
+                title: "OTP Saving",
+                description: "Build for custom WordPress elementor widget to compare and calculate saving on otp.",
+                link: "otp-saving.html",
+                icon: ` <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />`,
+            },
+            {
+                title: "Funding Offer",
+                description: "Build for custom WordPress elementor widget to compare and calculate funding offer.",
+                link: "funding-offer.html",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`,
+            },
+            {
+                title: "Tour Booking",
+                description: "Build for custom WordPress plugin to fetch and display packages from WordPress for bookings.",
+                link: "tour-booking.html",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />`,
+            },
+        ];
+    </script>
 </body>
 
 </html>

@@ -7,12 +7,12 @@
 }
 
 /* Range Input */
-input[type="range"] {
+ input[type="range"] {
     @apply w-full mx-0 my-4 bg-transparent bg-blue-200 rounded-lg appearance-none;
 }
 
 input[type="range"]:focus {
-   @apply outline-none;
+    @apply outline-none;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {

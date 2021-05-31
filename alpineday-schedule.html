@@ -38,7 +38,7 @@
                     <template x-for="(session, index) in alpineday.schedule" :key="index">
                         <li :key="index" class="flex items-center flex-grow-0">
                             <span 
-                                x-text="new Date(session.at).toLocaleString('en-US',  { timeZone: 'EST', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true})" 
+                                x-text="new Date(session.at).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale,  { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true})" 
                                 :class="{ 'bg-indigo-700 text-white' : session.highlight, 'text-indigo-700 bg-indigo-100 ': !session.highlight  }" 
                                 class="px-2 py-1 text-sm font-semibold rounded"></span>
                             <span x-text="session.session"  :class="{ 'bg-indigo-100 text-white font-bold' : session.highlight }"  class="flex-1 px-4 py-1 text-sm font-medium text-gray-800 rounded-r"></span>
@@ -91,58 +91,58 @@
             schedule: [
                 {
                     session: "Opening Remarks 🚀",
-                    at: "11 June 2021 09:00",
+                    at: "10 June 2021 09:00 EDT",
                     highlight: true,
                 },
                 {
                     session: "The State Of Alpine by Caleb Porzio",
-                    at: "11 June 2021 09:10",
+                    at: "10 June 2021 09:10 EDT",
                 },
                 {
                     session: "Tips for real-world AlpineJS by Hugo Di Francesco",
-                    at: "11 June 2021 10:00",
+                    at: "10 June 2021 10:00 EDT",
                 },
                 {
                     session: "Building a Better Modal by Austen Cameron",
-                    at: "11 June 2021 10:20",
+                    at: "10 June 2021 10:20 EDT",
                 },
                 {
                     session: "Micro Interactions using AlpineJS by Shruti Balasa",
-                    at: "11 June 2021 10:40",
+                    at: "10 June 2021 10:40 EDT",
                 },
                 {
                     session: "Break ⏳",
-                    at: "11 June 2021 11:00",
+                    at: "10 June 2021 11:00 EDT",
                     highlight: true,
                 },
                 {
                     session: "How to keep your tech stack simple, have a calm life, and make a million dollars by Justin Jackson & Jon Buda",
-                    at: "11 June 2021 11:20",
+                    at: "10 June 2021 11:20 EDT",
                 },
                 {
                     session: "How To Carve A Spoon (Literally) by Jesse Schutt",
-                    at: "11 June 2021 11:40",
+                    at: "10 June 2021 11:40 EDT",
                 },
                 {
                     session: "From Vue to Alpine: How & Why by Matt Stauffer",
-                    at: "11 June 2021 12:00",
+                    at: "10 June 2021 12:00 EDT",
                 },
                 {
                     session: "Break ⏳",
-                    at: "11 June 2021 12:20",
+                    at: "10 June 2021 12:20 EDT",
                     highlight: true,
                 },
                 {
                     session: "Live Pairing Session: Building Alpine V3 From Scratch by Adam Wathan",
-                    at: "11 June 2021 12:40",
+                    at: "10 June 2021 12:40 EDT",
                 },
                 {
                     session: "The Future Of Alpine by Caleb Porzio",
-                    at: "11 June 2021 13:15",
+                    at: "10 June 2021 13:15 EDT",
                 },
                 {
                     session: "Closing Remarks & No Plans To Merge After Party 🎉",
-                    at: "11 June 2021 15:00",
+                    at: "10 June 2021 15:00 EDT",
                     highlight: true,
                 },
             ]
